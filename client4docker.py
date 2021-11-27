@@ -31,7 +31,9 @@ if __name__ == "__main__":
             state_date = s.recv(100)
 
             try:
-                current_speed, current_angle = state_date.decode("utf-8").split(' ')
+                current_speed, current_angle = state_date.decode(
+                    "utf-8"
+                    ).split(' ')
             except Exception as er:
                 print(er)
                 pass
@@ -41,7 +43,13 @@ if __name__ == "__main__":
             data = s.recv(100000)
 
             try:
-                image = cv2.imdecode(np.frombuffer(data,np.uint8), -1)
+                image = cv2.imdecode(
+                    np.frombuffer(
+                        data,
+                        np.uint8
+                        ), -1
+                    )
+
                 print(current_speed, current_angle)
                 print(image.shape)
                 # your process here
