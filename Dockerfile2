@@ -1,0 +1,27 @@
+FROM ubuntu:18.04
+RUN apt-get update && apt-get install wget -y \
+    && apt install build-essential zlib1g-dev libncurses5-dev libgdbm-dev libnss3-dev libssl-dev libsqlite3-dev libreadline-dev libffi-dev wget libbz2-dev -y
+RUN wget https://www.python.org/ftp/python/3.7.6/Python-3.7.6.tgz \
+    && tar -xf Python-3.7.6.tgz \
+    && cd Python-3.7.6 \
+    && ./configure --enable-optimizations \
+    && make -j 8 \
+    && cd
+RUN apt install python3-pip -y
+RUN apt install software-properties-common -y\
+    && add-apt-repository ppa:deadsnakes/ppa -y\
+    && apt update\
+    && apt install python3.7 -y
+
+WORKDIR /install
+COPY requirements.txt .
+RUN chmod +x requirements.txt \
+    && ./requirements.txt .y
+RUN apt install libgl1-mesa-glx -y \
+    && apt-get install libgtk2.0-0 -y \
+    && apt install -y libsm6 -y 
+RUN apt install git -y \
+    && cd\ 
+    && git clone https://github.com/triledinh159/client4docker
+RUN python3.7 -m pip install opencv-python==4.1.2.30
+CMD python3.7 ~/client4docker/client4docker2.py
