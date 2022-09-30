@@ -4,6 +4,3 @@ python3.7 -m pip install opencv-contrib-python==4.1.1.26
 python3.7 -m pip install numpy==1.21.2
 python3.7 -m pip install matplotlib
 python3.7 -m pip install pybind11==2.10.0
-
-
-
